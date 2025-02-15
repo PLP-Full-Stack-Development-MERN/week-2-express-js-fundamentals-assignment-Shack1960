@@ -1,93 +1,78 @@
-**Week 2: Express.js Fundamentals Assignment**
+# Express.js Fundamentals Assignment
 
-**Objective:**
+## Setup Instructions
 
-- Apply Express.js concepts learned throughout the week.
-- Develop hands-on experience with creating routes, middleware, and API endpoints.
-- Understand and implement RESTful APIs.
+1. Clone the repository:
+   ```sh
+   git clone <>
+   cd express-assignment
+   ```
 
-**Instructions:**
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-1. **Setup Express.js Project:**
+3. Start the server:
+   ```sh
+   node index.js
+   ```
 
-   - Install Node.js using NVM.
-   - Create a new project folder named `express-assignment`.
-   - Initialize a Node.js project using:
-     ```sh
-     npm init -y
-     ```
-   - Install necessary dependencies:
-     ```sh
-     npm install express dotenv
-     ```
+4. The server will be running on `http://localhost:3000`
 
-2. **Project Structure:**
+## API Documentation
 
-   - Organize your project files with a clear folder structure:
-     ```
-     express-assignment/
-     │-- routes/
-     │    ├── userRoutes.js
-     │    ├── productRoutes.js
-     │-- middleware/
-     │    ├── logger.js
-     │-- controllers/
-     │    ├── userController.js
-     │    ├── productController.js
-     │-- index.js
-     │-- package.json
-     │-- README.md
-     │-- .env
-     ```
+### Users
 
-3. **Create Routes:**
+- **GET /api/users** - Get all users
+- **GET /api/users/:id** - Get a single user by ID
+- **POST /api/users** - Create a new user
+  ```json
+  {
+    "name": "New User"
+  }
+  ```
+- **PUT /api/users/:id** - Update a user
+  ```json
+  {
+    "name": "Updated User"
+  }
+  ```
+- **DELETE /api/users/:id** - Delete a user
 
-   - Create `userRoutes.js` and `productRoutes.js` inside the `routes/` folder.
-   - Implement RESTful routes for users and products (GET, POST, PUT, DELETE).
-   - Ensure proper usage of route parameters and query strings.
+### Products
 
-4. **Implement Middleware:**
+- **GET /api/products** - Get all products
+- **GET /api/products/:id** - Get a single product by ID
+- **POST /api/products** - Create a new product
+  ```json
+  {
+    "name": "New Product",
+    "price": 19.99
+  }
+  ```
+- **PUT /api/products/:id** - Update a product
+  ```json
+  {
+    "name": "Updated Product",
+    "price": 29.99
+  }
+  ```
+- **DELETE /api/products/:id** - Delete a product
 
-   - Create a custom middleware function in `middleware/logger.js` to log request details (method, URL, timestamp).
-   - Apply middleware globally to all routes.
+## Error Handling
 
-5. **Develop Controllers:**
+- **404 Not Found** - Route not found
+- **500 Internal Server Error** - Something went wrong on the server
 
-   - Create controller functions in `controllers/userController.js` and `controllers/productController.js`.
-   - Implement business logic to handle requests and responses.
+## Testing
 
-6. **Environment Variables:**
+Test the API using tools like Postman or cURL.
 
-   - Use `dotenv` to manage environment variables.
-   - Define variables such as `PORT` in the `.env` file and access them inside the application.
+Example cURL commands:
+```sh
+# Get all users
+curl http://localhost:3000/api/users
 
-7. **Error Handling:**
-
-   - Implement a global error-handling middleware to catch and respond to errors gracefully.
-
-8. **Testing:**
-
-   - Run the server using:
-     ```sh
-     node index.js
-     ```
-   - Test API endpoints using Postman or cURL.
-   - Verify routes, middleware functionality, and error handling.
-
-9. **Documentation:**
-
-   - Add a `README.md` with instructions on setting up and running the project.
-   - Document available API endpoints with descriptions and example requests.
-
-10. **Submission:**
-
-   - Push your code to your GitHub repository.
-
-**Evaluation Criteria:**
-
-- Correct implementation of Express routes and middleware.
-- Proper error handling and logging.
-- Clean project structure and code organization.
-- Detailed documentation with clear instructions.
-- Successful testing of all endpoints.
-
+# Create a new user
+curl -X POST -H "Content-Type: application/json" -d '{"name":"Ethan Hawke"}' http://localhost:3000/api/users
